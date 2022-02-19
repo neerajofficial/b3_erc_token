@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-
 import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json';
 import Token from './artifacts/contracts/Token.sol/Token.json';
-import NSToken from './artifacts/contracts/NSToken.sol/NSToken.json';
+
 import './styles.css';
 
-const greetingAddress = "0x5FbDB2315678afecb367f032d93F64280aa3";
-const tokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E93F0512";
-const nsTokenAddress = "0x5FC8d32690cc91D4c39d9d3abc6989F875707";
+const greetingAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const tokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 function App() {
 	const [greeting, setGreetingValue] = useState('');
@@ -40,7 +38,7 @@ function App() {
 			console.log(`${amount} coins successfully sent to ${userAccount}`);
 		}
 	}
-
+ 
 	const fetchGreeting = async () => {
 		if (typeof window.ethereum !== 'undefined') {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -65,27 +63,6 @@ function App() {
 			setGreetingValue('');
 			await transaction.wait();
 			fetchGreeting();
-		}
-	}
-
-
-	const nstDetails = async () => {
-		if (typeof window.ethereum !== 'undefined') {
-			const provider = new ethers.providers.Web3Provider(window.ethereum);
-			const contract = new ethers.Contract(nsTokenAddress, NSToken.abi, provider);
-			try {
-				const name = await contract.name();
-				console.log('name: ',name);
-				
-				const symbol = await contract.symbol();
-				console.log('symbol: ',symbol);
-
-				const totalSupply = await contract.totalSupply();
-				console.log('totalSupply: ',totalSupply);
-
-			}  catch (error) {
-				console.log("Error: ",error);
-			}
 		}
 	}
 
@@ -120,10 +97,6 @@ function App() {
 				onChange={e => setAmount(e.target.value)}
 				placeholder="Amount"
 			/>
-
-			<br/>
-
-			<button onClick={nstDetails}>Get NSToken Details</button>
 		</div>
 	)
 }
