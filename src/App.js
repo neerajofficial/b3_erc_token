@@ -6,9 +6,9 @@ import Token from './artifacts/contracts/Token.sol/Token.json';
 import NSToken from './artifacts/contracts/NSToken.sol/NSToken.json';
 import './styles.css';
 
-const greetingAddress = "0x5FbDB2315678afecb367f032d93F64280aa3";
-const tokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E93F0512";
-const nsTokenAddress = "0x5FC8d32690cc91D4c39d9d3abc6989F875707";
+const greetingAddress = "0x5FbDB2315678afecb367f032d93F0aa3";
+const tokenAddress = "0xe7f1725E7734CE288F8367e1Bb143E512";
+const nsTokenAddress = "0x5FC8d32690cc91D4c39d9d3abcBD15707";
 
 function App() {
 	const [greeting, setGreetingValue] = useState('');
